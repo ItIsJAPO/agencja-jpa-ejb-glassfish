@@ -1,9 +1,19 @@
 package com.agencja.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import javax.persistence.*;
+
+
+@Entity
+@NamedQueries({
+        @NamedQuery(name = "klub.getAll", query = "Select k from Klub k"),
+        @NamedQuery(name = "klub.getByID", query = "Select k from Klub k where k.idKlub = :idKlub"),
+})
+
 public class Klub {
 
-    private static int KlubID = 0;
-    private int ID;
+    private Long idKlub;
     private String miasto;
     private String nazwa;
     private int ilosc_miejsc;
@@ -12,19 +22,20 @@ public class Klub {
     }
 
     public Klub(String miasto, String nazwa, int ilosc_miejsc) {
-        super();
-        this.ID = ++KlubID;
         this.miasto = miasto;
         this.nazwa = nazwa;
         this.ilosc_miejsc = ilosc_miejsc;
     }
 
-    public int getID() {
-        return ID;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getIdKlub() {
+        return idKlub;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setIdKlub(Long idKlub) {
+        this.idKlub = idKlub;
     }
 
     public String getMiasto() {

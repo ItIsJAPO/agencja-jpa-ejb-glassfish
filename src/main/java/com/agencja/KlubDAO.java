@@ -1,7 +1,19 @@
 package com.agencja;
 
-/**
- * Created by Ufo on 2016-01-10.
- */
-public class KlubDAO {
+import com.agencja.domain.Klub;
+
+import java.util.List;
+
+public interface KlubDAO {
+
+    Klub addKlub(Klub klub);
+
+    List<Klub> getAllKlubs();
+
+    Klub getKlubByID(Long id);
+
+    Klub updateKlub(Klub klub);
+
+    void deleteKlub(Klub klub);
+
 }
