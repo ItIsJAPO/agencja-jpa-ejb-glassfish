@@ -3,6 +3,8 @@ package com.agencja.domain;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +19,8 @@ public class Klub {
     private String miasto;
     private String nazwa;
     private int ilosc_miejsc;
+
+    private List<Koncert> koncerts = new ArrayList<Koncert>();
 
     public Klub() {
     }
@@ -60,5 +64,14 @@ public class Klub {
 
     public void setIlosc_miejsc(int ilosc_miejsc) {
         this.ilosc_miejsc = ilosc_miejsc;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "klub")
+    @JsonIgnore
+    public List<Koncert> getKoncerts() {
+        return koncerts;
+    }
+    public void setKoncerts(List<Koncert> koncerts) {
+        this.koncerts = koncerts;
     }
 }

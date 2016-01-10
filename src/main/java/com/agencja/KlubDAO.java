@@ -7,13 +7,9 @@ import java.util.List;
 public interface KlubDAO {
 
     Klub addKlub(Klub klub);
-
     List<Klub> getAllKlubs();
-
     Klub getKlubByID(Long id);
-
     Klub updateKlub(Klub klub);
-
     void deleteKlub(Klub klub);
 
 }

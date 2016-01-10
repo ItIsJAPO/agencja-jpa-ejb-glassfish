@@ -1,7 +1,17 @@
 package com.agencja;
 
-/**
- * Created by Ufo on 2016-01-10.
- */
-public class KoncertDAO {
+import com.agencja.domain.Klub;
+import com.agencja.domain.Koncert;
+
+import java.util.List;
+
+public interface KoncertDAO {
+
+    Koncert addKoncert(Koncert koncert);
+    List<Koncert> getAllKoncerts();
+    Koncert getKoncertByID(Long id);
+    Koncert updateKoncert(Koncert koncert);
+    void deleteKoncert(Koncert koncert);
+    List<Koncert> getKoncertByKlubID(Klub klub);
+
 }
