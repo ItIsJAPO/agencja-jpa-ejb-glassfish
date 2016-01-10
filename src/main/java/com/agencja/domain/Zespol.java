@@ -1,35 +1,34 @@
 package com.agencja.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import javax.persistence.*;
+
+
+@Entity
+@Table (name = "Zespol")
+@NamedQueries({
+        @NamedQuery(name = "zespol.getAll", query = "Select z from Zespol z"),
+        @NamedQuery(name = "zespol.getByID", query = "Select z from Zespol z where z.idZespol = :idZespol"),
+})
+
 public class Zespol {
 
-    private static int ZespolID = 0;
-    private int ID;
+    private long idZespol;
     private String nazwa;
     private String kraj;
 
-    public Zespol() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getIdZespol() {
+        return idZespol;
     }
-
-
-    public Zespol(String nazwa, String kraj) {
-        super();
-        this.ID = ++ZespolID;
-        this.nazwa = nazwa;
-        this.kraj = kraj;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setIdZespol(long idZespol) {
+        this.idZespol = idZespol;
     }
 
     public String getNazwa() {
         return nazwa;
     }
-
     public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
     }
@@ -37,9 +36,9 @@ public class Zespol {
     public String getKraj() {
         return kraj;
     }
-
     public void setKraj(String kraj) {
         this.kraj = kraj;
     }
+
 }
 

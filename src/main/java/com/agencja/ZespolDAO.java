@@ -1,7 +1,13 @@
 package com.agencja;
 
-/**
- * Created by Ufo on 2016-01-10.
- */
-public class ZespolDAO {
+import com.agencja.domain.Zespol;
+import java.util.List;
+
+public interface ZespolDAO {
+
+    Zespol addZespol(Zespol zespol);
+    List<Zespol> getAllZespols();
+    Zespol getZespolByID(Long id);
+    Zespol updateZespol(Zespol zespol);
+    void deleteZespol(Zespol zespol);
 }
