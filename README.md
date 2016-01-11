@@ -36,7 +36,7 @@
  `      <property name="connectionAttributes" value=";ifexists=true"></property>`    
  `    </jdbc-connection-pool>`    
  `    <jdbc-resource pool-name="HSQLPool" description="DataSource for demo apps with HSQLDB" `  
- `    jndi-name="jdbc/musicstore"></jdbc-resource>`        
+ `    jndi-name="jdbc/agencja"></jdbc-resource>`        
  * start GlassFish  
  `asadmin start-domain`
  * check out connection from inside GlassFish
