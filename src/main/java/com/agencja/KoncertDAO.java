@@ -12,6 +12,5 @@ public interface KoncertDAO {
     Koncert getKoncertByID(Long id);
     Koncert updateKoncert(Koncert koncert);
     void deleteKoncert(Koncert koncert);
-    List<Koncert> getKoncertByKlubID(Klub klub);
 
 }

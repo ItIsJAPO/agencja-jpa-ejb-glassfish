@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Stateless
-@Path("/customer")
+@Path("/zespol")
 public class ZespolResource {
 
     @EJB

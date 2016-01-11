@@ -1,7 +1,4 @@
 package com.agencja.domain;
-
-import org.codehaus.jackson.annotate.JsonIgnore;
-
 import javax.persistence.*;
 
 
