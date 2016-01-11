@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Podglad klubu</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbuttons">
+            <div class="navbuttonhome"><a href="../../index.html"><img src="../../graphics/home.png" class="navbuttonhome"></a></div>
+            <div class="navbutton"><a href="../../showZespols.html"><img src="../../graphics/zespol.png" class="navbutton"></a></div>
+            <div class="navbutton"><a href="../../showKlubs.html"><img src="../../graphics/klub.png" class="navbutton"></a></div>
+            <div class="navbutton"><a href="../../showKoncerts.html"><img src="../../graphics/koncert.png" class="navbutton"></a></div>
+        </div>
+    </div>
+    <form action="../../showKlubs.html" method="post">
+        <table class="operationtable">
+            <tr class='tableheader'>
+                <td colspan='2'>Podgląd zespolu</td>
+            </tr>
+            <tr>
+                <td>Miasto:</td>
+                <td><input type="text" name="miasto" /></td>
+            </tr>
+            <tr>
+                <td>Nazwa:</td>
+                <td><input type="text" name="nazwa" /></td>
+            </tr>
+            <tr>
+                <td>Ilosc miejsc:</td>
+                <td><input type="text" name="ilosc_miejsc" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="POWROT" align="right"></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Zespoly</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script src="js/zespol/showZespols.js"></script>
+</head>
+
+<body>
+<div class="navbar">
+    <div class="navbuttons">
+        <div class="navbuttonhome"><a href="index.html"><img src="graphics/home.png" class="navbuttonhome"></a></div>
+        <div class="navbutton"><a href="showZespols.html"><img src="graphics/zespol.png" class="navbutton"></a></div>
+        <div class="navbutton"><a href="showKlubs.html"><img src="graphics/klub.png" class="navbutton"></a></div>
+        <div class="navbutton"><a href="showKoncerts.html"><img src="graphics/koncert.png" class="navbutton"></a></div>
+    </div>
+</div>
+
+<div class="centered">
+    <a href="/agencja/operations/zespol/addZespol.html">
+        <div class="opbutton">
+            <img src="graphics/plus.png">
+            Dodaj nowy zespol
+        </div>
+    </a>
+</div>
+
+<table class="presentationTable" id="presentationTable" align="center">
+    <tr class="tableheader" id="tableheader">
+        <td>ID</td>
+        <td>Nazwa</td>
+        <td>Kraj</td>
+        <td colspan="3">Operacje</td>
+    </tr>
+    <div id="tablePlaceholder"></div>
+</table>
+</body>
+</html>
