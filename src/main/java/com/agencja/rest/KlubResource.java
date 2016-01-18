@@ -19,6 +19,7 @@ public class KlubResource {
 
     @POST
     @Path("/addKlub")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response addKlub(@FormParam("miasto") String miasto,
                             @FormParam("nazwa") String nazwa,
                             @FormParam("ilosc_miejsc") int ilosc_miejsc) {
@@ -37,16 +38,18 @@ public class KlubResource {
     public List<Klub> getAllProducts() {
         return klubManager.getAllKlubs();
     }
-
+/*
     @GET
     @Path("/getKlub/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Klub getKlubByID(@PathParam("id") Long id) {
         return klubManager.getKlubByID(id);
     }
+*/
 
     @POST
     @Path("/updateKlub")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateKlub(@FormParam("idKlub") long idKlub,
                                @FormParam("miasto") String miasto,
                                @FormParam("nazwa") String nazwa,
@@ -64,6 +67,7 @@ public class KlubResource {
 
     @POST
     @Path("/deleteKlub")
+    @Produces(MediaType.TEXT_PLAIN)
     public Response deleteKlub(@FormParam("idKlub") long idKlub) {
         Klub klub = new Klub();
         klub.setIdKlub(idKlub);

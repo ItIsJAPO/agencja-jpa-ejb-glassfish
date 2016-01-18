@@ -8,7 +8,7 @@ public interface KlubDAO {
 
     Klub addKlub(Klub klub);
     List<Klub> getAllKlubs();
-    Klub getKlubByID(Long id);
+    Klub getKlubByID(Klub klub);
     Klub updateKlub(Klub klub);
     void deleteKlub(Klub klub);
 

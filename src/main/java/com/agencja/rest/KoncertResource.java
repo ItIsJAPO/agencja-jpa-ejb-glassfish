@@ -24,15 +24,17 @@ public class KoncertResource {
 
     @POST
     @Path("/addKoncert")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response addKoncert(@FormParam("nazwa_koncertu") String nazwa_koncertu,
                                @FormParam("ceny_biletow") double ceny_biletow,
-                               @FormParam("klub") String klub) {
-        Long klubID = Long.parseLong(klub.substring(0, klub.indexOf('.')));
+                               @FormParam("klub") long idKlub) {
 
-        Koncert koncert = new Koncert();
-        koncert.setKlub(klubManager.getKlubByID(klubID));
-        koncert.setNazwa_koncertu(nazwa_koncertu);
-        koncert.setCeny_biletow(ceny_biletow);
+        Klub klubById = new Klub();
+        klubById.setIdKlub(idKlub);
+
+        Klub klub = klubManager.getKlubByID(klubById);
+
+        Koncert koncert = new Koncert(nazwa_koncertu, ceny_biletow, klub);
 
         koncertManager.addKoncert(koncert);
         return Response.status(Response.Status.CREATED).build();
@@ -45,28 +47,27 @@ public class KoncertResource {
         return koncertManager.getAllKoncerts();
     }
 
-
-    @GET
-    @Path("/getKoncert/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Koncert getKoncertByID(@PathParam("id") Long id) {
-        return koncertManager.getKoncertByID(id);
-    }
-
     @POST
     @Path("/updateKoncert")
     public Response updateKoncert(@FormParam("nazwa_koncertu") String nazwa_koncertu,
                                   @FormParam("ceny_biletow") double ceny_biletow,
-                                  @FormParam("klub") String klub)
+                                  @FormParam("klub") long idKlub)
     {
-        Long klubID = Long.parseLong(klub.substring(0, klub.indexOf('.')));
+        Klub klubById = new Klub();
+        klubById.setIdKlub(idKlub);
 
-        Koncert koncert = new Koncert();
-        koncert.setKlub(klubManager.getKlubByID(klubID));
+        Koncert koncertById = new Koncert();
+        koncertById.setIdKoncert(idKlub);
+
+        Koncert koncert = koncertManager.getKoncertByID(koncertById);
+        Klub klub = klubManager.getKlubByID(klubById);
+
         koncert.setNazwa_koncertu(nazwa_koncertu);
         koncert.setCeny_biletow(ceny_biletow);
+        koncert.setKlub(klub);
 
         koncertManager.updateKoncert(koncert);
+
         return Response.status(Response.Status.CREATED).build();
     }
 

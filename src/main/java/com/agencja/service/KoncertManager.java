@@ -39,9 +39,9 @@ public class KoncertManager implements KoncertDAO {
         return em.createNamedQuery("koncert.getAll").getResultList();
     }
 
-    public Koncert getKoncertByID(Long id)
+    public Koncert getKoncertByID(Koncert koncert)
     {
-        return em.find(Koncert.class, id);
+        return em.find(Koncert.class, koncert.getIdKoncert());
     }
 
     public List<Koncert> getKoncertByKlubID(Klub klub)

@@ -3,6 +3,7 @@ package com.agencja.service;
 import com.agencja.KlubDAO;
 import com.agencja.domain.Klub;
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +18,6 @@ public class KlubManager implements KlubDAO {
     public Klub addKlub(Klub klub) {
         em.persist(klub);
         em.flush();
-
         return klub;
     }
 
@@ -34,8 +34,8 @@ public class KlubManager implements KlubDAO {
         return em.createNamedQuery("klub.getAll").getResultList();
     }
 
-    public Klub getKlubByID(Long id) {
-        return em.find(Klub.class, id);
+    public Klub getKlubByID(Klub klub) {
+        return em.find(Klub.class, klub.getIdKlub());
     }
 
 

@@ -15,12 +15,25 @@ import java.util.List;
 
 public class Klub {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idKlub;
+
+    @Column(nullable = false)
     private String miasto;
+
+    @Column(nullable = false)
     private String nazwa;
+
+    @Column(nullable = false)
     private int ilosc_miejsc;
 
-    private List<Koncert> koncerts = new ArrayList<Koncert>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "klub")
+    @JsonIgnore
+ //   private List<Koncert> koncerts = new ArrayList<Koncert>();
+    private List<Koncert> koncerts = null;
 
     public Klub() {
     }
@@ -32,8 +45,6 @@ public class Klub {
     }
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getIdKlub() {
         return idKlub;
     }
@@ -66,8 +77,7 @@ public class Klub {
         this.ilosc_miejsc = ilosc_miejsc;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "klub")
-    @JsonIgnore
+
     public List<Koncert> getKoncerts() {
         return koncerts;
     }

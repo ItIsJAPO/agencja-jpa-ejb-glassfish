@@ -9,7 +9,7 @@ public interface KoncertDAO {
 
     Koncert addKoncert(Koncert koncert);
     List<Koncert> getAllKoncerts();
-    Koncert getKoncertByID(Long id);
+    Koncert getKoncertByID(Koncert koncert);
     Koncert updateKoncert(Koncert koncert);
     void deleteKoncert(Koncert koncert);
 

@@ -11,14 +11,32 @@ import javax.persistence.*;
 
 public class Koncert {
 
-    private Long idKoncert;
-    private String nazwa_koncertu;
-    private double ceny_biletow;
-
-    private Klub klub;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idKoncert;
+
+    @Column(nullable = false)
+    private String nazwa_koncertu;
+
+    @Column(nullable = false)
+    private double ceny_biletow;
+
+    @ManyToOne
+    @JoinColumn(name = "idKlub")
+    private Klub klub;
+
+
+    public Koncert() {
+    }
+
+
+    public Koncert(String nazwa_koncertu, double ceny_biletow, Klub klub) {
+        super();
+        this.nazwa_koncertu = nazwa_koncertu;
+        this.ceny_biletow = ceny_biletow;
+        this.klub = klub;
+    }
+
     public Long getIdKoncert() {
         return idKoncert;
     }
@@ -43,8 +61,7 @@ public class Koncert {
         this.ceny_biletow = ceny_biletow;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "idKlub")
+
     public Klub getKlub() {
         return klub;
     }
