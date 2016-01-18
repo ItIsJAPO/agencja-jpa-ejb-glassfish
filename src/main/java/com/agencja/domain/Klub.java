@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "klub.getAll", query = "Select k from Klub k"),
-        @NamedQuery(name = "klub.getByID", query = "Select k from Klub k where k.idKlub = :idKlub"),
+        @NamedQuery(name = "klub.getByID", query = "Select k from Klub k where k.idKlub = :idKlub")
 })
 
 public class Klub {

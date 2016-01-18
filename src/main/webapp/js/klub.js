@@ -81,7 +81,7 @@ $(document).ready(function()
 
             if(miasto.length < 2 )
                 {
-                    $addAlert.text('Name and surname should have minimum 3 and maximum 30 characters!');
+                    $addAlert.text('Miasto musi miec co najmniej 2 litery!');
                     $addAlert.addClass('in');
                 }
             else

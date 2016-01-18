@@ -6,13 +6,19 @@ import javax.persistence.*;
 @Table(name = "Zespol")
 @NamedQueries({
         @NamedQuery(name = "zespol.getAll", query = "Select z from Zespol z"),
-        @NamedQuery(name = "zespol.getByID", query = "Select z from Zespol z where z.idZespol = :idZespol"),
+        @NamedQuery(name = "zespol.getByID", query = "Select z from Zespol z where z.idZespol = :idZespol")
 })
 
 public class Zespol {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idZespol;
+
+    @Column(nullable = false)
     private String nazwa;
+
+    @Column(nullable = false)
     private String kraj;
 
     public Zespol() {
@@ -23,8 +29,6 @@ public class Zespol {
         this.kraj = kraj;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getIdZespol() {
         return idZespol;
     }
