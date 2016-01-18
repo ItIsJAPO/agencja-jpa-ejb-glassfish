@@ -23,6 +23,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="libraries/bootstrap/js/bootstrap.min.js"></script>
     <script src="libraries/jquery/jquery-2.1.4.js"></script>
 
     <script src="js/ajax.js"></script>
@@ -76,19 +77,19 @@
                 </th>
                 <th>
                     <div class="input-group text-center">
-                        <select id="select-klub-add" class="form-control">
-                            <option value="">Wybierz klub...</option>
-                        </select>
-                    </div>
-                </th>
-                <th>
-                    <div class="input-group text-center">
                         <input id="nazwa_koncertu" type="text" class="form-control" placeholder="nazwa koncertu">
                     </div>
                 </th>
                 <th>
                     <div class="input-group text-center">
                         <input id="ceny_biletow" type="text" class="form-control" placeholder="ceny biletów">
+                    </div>
+                </th>
+                <th>
+                    <div class="input-group text-center">
+                        <select id="select-klub-add" class="form-control">
+                            <option value="">Wybierz klub...</option>
+                        </select>
                     </div>
                 </th>
                 <th></th>
@@ -109,7 +110,8 @@
                 <div class="input-group input-group-lg" id="inputs-update">
                     <input type="text" class="form-control" disabled>
                     <input type="text" class="form-control" placeholder="nazwa koncertuw">
-                    <input type="text" class="form-control" placeholder="kraj">
+                    <input type="text" class="form-control" placeholder="ceny_biletow">
+                    <select autocomplete="off" class="form-control"></select>
                 </div>
 
                 <div class="alert alert-danger fade" id='update-alert'></div>

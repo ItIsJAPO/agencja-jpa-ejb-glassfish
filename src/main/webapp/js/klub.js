@@ -24,7 +24,7 @@ $(document).ready(function()
     {
         if(typeof null != idKlub && typeof 'undefined' != idKlub )
         {
-            doAjax('../rest/klub/deleteKlub', 'DELETE', '', {idZespol: idZespol}).success(function(response){ location.reload(true); });
+            doAjax('../rest/klub/deleteKlub', 'DELETE', '', {idKlub: idKlub}).success(function(response){ location.reload(true); });
         }
     });
 
@@ -43,30 +43,15 @@ $(document).ready(function()
         $inputsUpdate.eq(3).val(ilosc_miejsc);
     });
 
-
-    $tbody.on('click', '.update-row', function()
-    {
-        var $this = $(this).closest('tr').children();
-        $updateAlert.removeClass('in');
-        $updateAlert.text('');
-        idKlub = $this.eq(0).text();
-        miasto = $this.eq(1).text();
-        nazwa = $this.eq(2).text();
-        ilosc_miejsc = $this.eq(3).text();
-        $inputsUpdate.eq(0).val(idKlub);
-        $inputsUpdate.eq(1).val(miasto);
-        $inputsUpdate.eq(2).val(nazwa);
-        $inputsUpdate.eq(3).val(nazwa);
-    });
     $('#update-form').submit(function(e)
     {
         $updateAlert.removeClass('in');
         $updateAlert.text('');
-        var newidKlub = $inputsUpdate.eq(0).val(),
+        var newIdKlub = $inputsUpdate.eq(0).val(),
             newMiasto = $inputsUpdate.eq(1).val(),
             newNazwa = $inputsUpdate.eq(2).val();
             newIlosc_miejsc = $inputsUpdate.eq(3).val();
-        if(idKlub != '' && typeof idKlub != 'undefined' && idKlub == newidKlub)
+        if(idKlub != '' && typeof idKlub != 'undefined' && idKlub == newIdKlub)
         {
             if(newMiasto == miasto && newNazwa == nazwa && newIlosc_miejsc == ilosc_miejsc)
             {
@@ -94,11 +79,19 @@ $(document).ready(function()
         	nazwa = $('#nazwa').val();
          	ilosc_miejsc = $('#ilosc_miejsc').val();
 
+            if(miasto.length < 2 )
+                {
+                    $addAlert.text('Name and surname should have minimum 3 and maximum 30 characters!');
+                    $addAlert.addClass('in');
+                }
+            else
+            {
         		doAjax('../rest/klub/addKlub', 'POST', '', {miasto: miasto, nazwa: nazwa, ilosc_miejsc: ilosc_miejsc}).success(
                 function(response)
                 {
                     location.reload(true);
                 });;
+            }
         });
 
 });

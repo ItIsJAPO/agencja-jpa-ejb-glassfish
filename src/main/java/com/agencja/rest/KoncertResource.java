@@ -49,10 +49,10 @@ public class KoncertResource {
 
     @POST
     @Path("/updateKoncert")
-    public Response updateKoncert(@FormParam("nazwa_koncertu") String nazwa_koncertu,
+    public Response updateKoncert(@FormParam("idKoncert") long idKoncert,
+                                  @FormParam("nazwa_koncertu") String nazwa_koncertu,
                                   @FormParam("ceny_biletow") double ceny_biletow,
-                                  @FormParam("klub") long idKlub)
-    {
+                                  @FormParam("klub") long idKlub) {
         Klub klubById = new Klub();
         klubById.setIdKlub(idKlub);
 

@@ -1,9 +1,9 @@
 $(document).ready(function()
 {
     var idKoncert,
-        idKlub,
         nazwa_koncertu,
         ceny_biletow,
+        idKlub,
         $updateAlert = $('#update-alert'),
         $inputsUpdate = $('#inputs-update').children(),
         $tbody = $('#hiring-tbody');
@@ -26,12 +26,12 @@ $(document).ready(function()
 
     $tbody.on('click', '.remove-row', function()
     {
-        idHiring = $(this).closest('tr').children().eq(0).text();
+        idKoncert = $(this).closest('tr').children().eq(0).text();
     });
 
     $("#delete-btn").on('click', function()
     {
-        if(typeof idHiring != null && typeof idHiring != 'undefined' )
+        if(typeof idKoncert != null && typeof idKoncert != 'undefined' )
         {
             doAjax('../rest/koncert/deleteKoncert', 'DELETE', '', {idKoncert: idKoncert})
                 .success(function(response){ location.reload(true); });
@@ -45,13 +45,13 @@ $(document).ready(function()
        $updateAlert.text('');
        $('#inputs-update select').children().prop('selected', false);
        idKoncert = $this.eq(0).text();
-       idKlub= $this.eq(1).text();
-       nazwa_koncertu = $this.eq(2).text();
-       ceny_biletow = $this.eq(3).text();
+       nazwa_koncertu = $this.eq(1).text();
+       ceny_biletow = $this.eq(2).text();
+       idKlub= $this.eq(3).text();
        $inputsUpdate.eq(0).val(idKoncert);
-       $inputsUpdate.eq(1).find('option[value='+idKlub+']').prop('selected', true);
-       $inputsUpdate.eq(2).val(nazwa_koncertu);
-       $inputsUpdate.eq(3).val(ceny_biletow);
+       $inputsUpdate.eq(1).val(nazwa_koncertu);
+       $inputsUpdate.eq(2).val(ceny_biletow);
+       $inputsUpdate.eq(3).find('option[value='+idKlub+']').prop('selected', true);
     });
 
     $('#update-form').submit(function(e)
@@ -59,12 +59,12 @@ $(document).ready(function()
         $updateAlert.removeClass('in');
         $updateAlert.text('');
         var newIdKoncert = $inputsUpdate.eq(0).val(),
-            newIdKlub = $inputsUpdate.eq(1).val(),
-            newNazwa_koncertu = $inputsUpdate.eq(2).val(),
-            newCeny_biletow = $inputsUpdate.eq(3).val();
+            newNazwa_koncertu = $inputsUpdate.eq(1).val(),
+            newCeny_biletow = $inputsUpdate.eq(2).val();
+            newIdKlub = $inputsUpdate.eq(3).val(),
         if(idKoncert != '' && typeof idKoncert != 'undefined' && idKoncert == newIdKoncert)
         {
-            if(newIdKlub == idKlub && nazwa_koncertu == newNazwa_koncertu && ceny_biletow == newCeny_biletow)
+            if(idKlub == newidKlub && nazwa_koncertu == newNazwa_koncertu && ceny_biletow == newCeny_biletow)
             {
                 $('#update-modal').modal('hide');
             }
@@ -73,9 +73,9 @@ $(document).ready(function()
                 doAjax('../rest/koncert/updateKoncert', 'PUT', '',
                 {
                     idKoncert: newIdKoncert,
-                    idKlub: newIdKlub,
                     nazwa_koncertu: newNazwa_koncertu,
                     ceny_biletow: newCeny_biletow
+                    idKlub: newIdKlub,
 
                  }).success(function(response){ location.reload(true); });
                 $('#update-modal').modal('hide');
@@ -88,10 +88,10 @@ $(document).ready(function()
     {
     	var $addAlert = $('#add-alert');
     	$addAlert.removeClass('in');
-    	$addAlert.text('');
-    	var idKlub= $('#select-klub-add').val(),
-            nazwa_koncertu = $('#nazwa_koncertu').val();
+                               	$addAlert.text('');
+        var nazwa_koncertu = $('#nazwa_koncertu').val();
             ceny_biletow = $('#ceny_biletow').val();
+    	    idKlub= $('#select-klub-add').val(),
 
     	if(idKlub == '')
     	{
@@ -101,7 +101,7 @@ $(document).ready(function()
 
     	else
     	{
-    		doAjax('../rest/koncert/addKoncert', 'POST', '', { idKlub: idKlub, nazwa_koncertu: nazwa_koncertu, ceny_biletow: ceny_biletow})
+    		doAjax('../rest/koncert/addKoncert', 'POST', '', { nazwa_koncertu: nazwa_koncertu, ceny_biletow: ceny_biletow, idKlub: idKlub})
     		    .success(function(response){ location.reload(true); });
     	}
     });

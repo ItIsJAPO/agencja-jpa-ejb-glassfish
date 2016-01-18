@@ -79,6 +79,20 @@ function createOptionSelect($select, listObjects)
         $option.attr('value', object[Object.keys(object)[0]]);
     }
 
+function createTextToOptionSelect(object)
+{
+    var text = "ID: " + object[Object.keys(object)[0]];
+
+    if(object.hasOwnProperty('idKlub'))
+    {
+        text += ", " + object.miasto + " " + object.nazwa;
+    }
+
+    return text;
+}
+
+
+
 function isObject(val)
 {
     if (val === null)

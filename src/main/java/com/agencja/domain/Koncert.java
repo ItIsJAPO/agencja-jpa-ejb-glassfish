@@ -6,7 +6,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "koncert.getAll", query = "Select k from Koncert k"),
         @NamedQuery(name = "koncert.getByID", query = "Select k from Koncert k where k.idKoncert = :idKoncert"),
-        @NamedQuery(name = "koncert.getByIdKlub", query = "Select k from Koncert k where k.klub = :idKlub"),
+        @NamedQuery(name = "koncert.getByIdKlub", query = "Select k from Koncert k where k.klub.idKlub = :idKlub")
 })
 
 public class Koncert {
